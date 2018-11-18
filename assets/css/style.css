@@ -1,1 +1,6 @@
 /* comment */
+body {
+    background-image: url("../images/NvL.gif");
+    background-repeat: repeat;
+    background-size: 100%;
+}
