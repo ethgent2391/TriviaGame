@@ -9,27 +9,28 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="./assets/javascript/app.js"></script>
+    
 </head>
 <body>
-    <div class="container col-md-12 centered">
-        <div class="jumbotron col-md-10 m-5 p-5">
-            <h1 class="text-center">How well do you know the matrix trilogy?</h1>
-            <p class="text-center">Answer the questions in the allotted time</p>
+    <div class="container col-md-12">
+        <div id="hero" class="jumbotron col-md-10 m-5 p-5">
+            <h1 class="text-center text-light">How well do you know the Matrix?</h1>
+            <p class="text-center text-light">Answer each question in the allotted time</p>
                 <div class="container">
-                    <h3 id="question" class="text-center">this is where the question goes?</h3>
-                    <div id="answers">
-                        <div class="btn btn-secondary"></div>
-                        <div class="btn btn-secondary"></div>
-                        <div class="btn btn-secondary"></div>
-                        <div class="btn btn-secondary"></div>
-                    </div>
+                        <h3 id="question" class="text-center text-light">this is where the question goes?</h3>
+                        <div id="answers" class="col-md-2">
+                            <div id="a" class="ans btn btn-secondary m-2"></div>
+                            <div id="b" class="ans btn btn-secondary m-2"></div>
+                            <div id="c" class="ans btn btn-secondary m-2"></div>
+                            <div id="d" class="ans btn btn-secondary m-2"></div>
+                        </div>
                     <div class="card">
-                        <div id="timer" class="card-body text-center">30</div>
+                        <div id="timer" class="card-body text-center"></div>
                     </div>
                 </div>
         </div>
     </div>
     
 </body>
+<script src="./assets/javascript/app.js"></script>
 </html>
