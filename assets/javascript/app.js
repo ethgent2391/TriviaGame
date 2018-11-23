@@ -1,12 +1,12 @@
 //psudo code:
 //goals:
 //timer
-var score = 0;
-var count = 5;
-var x = 1
-var y = 1
-var answer = 0;
+var count = 11;
+var x = 1;
+var y = 1;
 var counter = setInterval(timer, 1000);
+
+var guess;
 var questions = {
         1: ["what is neo's given name?", "d"],
         2: ["How much time passes between the begining and the the end of The Matrix?", "c"],
@@ -21,7 +21,7 @@ var questions = {
         }
 var options = {
     1: ["Bob Thorton", "Keanu Anderson", "Neo....like Cher", "Thomas Anderson"],
-    2: ["1000000 milliseconds ",  "1 year", " months", "It doesn't. There is no such thing as time in the matrix"],
+    2: ["1000000 milliseconds ",  "1 year", "18 months", "It doesn't. There is no such thing as time in the matrix"],
     3: ["MetaCortex",  "MoneySoft",  "Micro-Corp",  "Apple"],
     4: ["none. he just says: Whoah! alot.",  "44",  "22",  "10"],
     5: ["Samuel L. Jackson",  "Gary Oldman",  "Sean Connery",  "All of the above"],
@@ -45,7 +45,6 @@ function timer(){
     }
             else{
                 $("#timer").html(count);
-                console.log(count);
         }
     }
 
@@ -61,30 +60,65 @@ function display(){
     $("#b").html(b);
     $("#c").html(c);
     $("#d").html(d);
-    x++;
-    y++;
+    
 };
 
 function reset(){
 
-if (x <= 10){
-        count=5;
+if (x < 10){
+        count=11;
+        clearInterval(counter);
+        x++;
+        y++;
         display();
         counter = setInterval(timer, 1000);
-        timer();
-        }
+        
+    }
     else{
         $("#quizarea").html("<h2>Quiz Over!</h2> \n <h3>Score: " + score + "/10 </h3>");
-        };
+        return;
+        };    
 };
 
-$("#a").click(answer = 1);
-$("#b").click(answer = 2);
-$("#c").click(answer = 3);
-$("#d").click(answer = 4);
+var answer = questions[y][2];
+var score = 0;
+function check(){
+    if (guess == answer){
+        score++;
+        reset();
+    }
+    else {
+        reset();
+    };
+    console.log(score);
+    console.log(answer);
+};
+
+
+
+$("#a").click(function(){
+    guess = "a";
+    console.log(guess);
+    check();
+});
+$("#b").click(function(){
+    guess = "b";
+    check();
+});
+$("#c").click(function(){
+    guess = "c";
+    check();
+});
+$("#d").click(function(){
+    guess = "d";
+    check();
+});
+// $("#b").click(answer = 2);
+// $("#c").click(answer = 3);
+// $("#d").click(answer = 4);
 
 display();
-console.log(x, y);
+
 
 
 
