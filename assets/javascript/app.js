@@ -1,29 +1,23 @@
 //psudo code:
 //goals:
 //timer
-var count = 10;
+var score = 0;
+var count = 5;
+var x = 1
+var y = 1
+var answer = 0;
 var counter = setInterval(timer, 1000);
 var questions = {
-        1: "what is neo's given name?",
-            //  answer: d
-        2: "How much time passes between the begining and the the end of The Matrix?",
-                // answer: c
-        3:  "What  Company did Neo work for before he was freed?",
-                // answer: a
-        4: "how many questions does neo ask in the first 45 minutes of The Matrix?", 
-                // answer: b
-        5: "Who almost played morpheus?", 
-                // answer: d
-        6: "What nickname does switch give to Neo before he is freed?",
-                // answer: c
-        7: "Morpheus's ship was named the Nebuchadnezzar, what is this a reference to?",
-                // answer: a
-        8: "where was The Matrix Filmed?",
-                // answer: b
-        9: "Was Switch originally a man or a Woman?",
-                // answer: d
-        10: "What does the Oracle tell Trinity?",  
-                // answer: c
+        1: ["what is neo's given name?", "d"],
+        2: ["How much time passes between the begining and the the end of The Matrix?", "c"],
+        3:  ["What  Company did Neo work for before he was freed?", "a"],
+        4: ["how many questions does neo ask in the first 45 minutes of The Matrix?", "b"], 
+        5: ["Who almost played morpheus?", "d"],
+        6: ["What nickname does switch give to Neo before he is freed?", "c"],
+        7: ["Morpheus's ship was named the Nebuchadnezzar, what is this a reference to?", "a"],
+        8: ["where was The Matrix Filmed?", "b"],
+        9: ["Was Switch originally a man or a Woman?", "d"],
+        10: ["What does the Oracle tell Trinity?", "c"],
         }
 var options = {
     1: ["Bob Thorton", "Keanu Anderson", "Neo....like Cher", "Thomas Anderson"],
@@ -37,10 +31,9 @@ var options = {
     9: [ "man", "woman",  "neither, shes a machine",  "It depends on whether they are in the matrix or not"],
     10: ["That she could svae 15% or more by switching insurance providers",  "That she was going to Disney land",  "That she would fall in love with the one",  "That there is no spoon"],
 };
-var x = 1
-var y = 1
 
-var score = 0;
+
+
 
 function timer(){
     count = count-1;
@@ -48,7 +41,7 @@ function timer(){
             clearInterval(counter);
             $("#timer").html(count);
             console.log("times up");
-            display();
+            reset();
     }
             else{
                 $("#timer").html(count);
@@ -57,7 +50,7 @@ function timer(){
     }
 
 function display(){
-    var ask = questions[y];
+    var ask = questions[y][0];
     var a = options[x][0];
     var b = options[x][1];
     var c = options[x][2];
@@ -71,6 +64,24 @@ function display(){
     x++;
     y++;
 };
+
+function reset(){
+
+if (x <= 10){
+        count=5;
+        display();
+        counter = setInterval(timer, 1000);
+        timer();
+        }
+    else{
+        $("#quizarea").html("<h2>Quiz Over!</h2> \n <h3>Score: " + score + "/10 </h3>");
+        };
+};
+
+$("#a").click(answer = 1);
+$("#b").click(answer = 2);
+$("#c").click(answer = 3);
+$("#d").click(answer = 4);
 
 display();
 console.log(x, y);
