@@ -7,6 +7,7 @@ var y = 1;
 var counter = setInterval(timer, 1000);
 
 var guess;
+var score = 0;
 var questions = {
         1: ["what is neo's given name?", "d"],
         2: ["How much time passes between the begining and the the end of The Matrix?", "c"],
@@ -55,6 +56,7 @@ function display(){
     var c = options[x][2];
     var d = options[x][3];
 
+    $("#start").hide();
     $("#question").html(ask);
     $("#a").html(a);
     $("#b").html(b);
@@ -80,10 +82,10 @@ if (x < 10){
         };    
 };
 
-var answer = questions[y][2];
-var score = 0;
+
+
 function check(){
-    if (guess == answer){
+    if (guess == questions[y][1]){
         score++;
         reset();
     }
@@ -91,7 +93,7 @@ function check(){
         reset();
     };
     console.log(score);
-    console.log(answer);
+    // console.log(answer);
 };
 
 
@@ -100,24 +102,30 @@ $("#a").click(function(){
     guess = "a";
     console.log(guess);
     check();
+    guess = null;
 });
 $("#b").click(function(){
     guess = "b";
+    console.log(guess);
     check();
+    guess = null;
 });
 $("#c").click(function(){
     guess = "c";
+    console.log(guess)
     check();
+    guess = null;
 });
 $("#d").click(function(){
     guess = "d";
+    console.log(guess)
     check();
+    guess = null;
 });
-// $("#b").click(answer = 2);
-// $("#c").click(answer = 3);
-// $("#d").click(answer = 4);
 
-display();
+$("#start").click(function(){
+    display();
+});
 
 
 
