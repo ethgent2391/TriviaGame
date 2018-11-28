@@ -45,6 +45,9 @@ function timer(){
     if (count <= 0){
             clearInterval(counter);
             $("#timer").html(count);
+            $("#question").hide();
+            $("#answers").hide();
+            $("#timer").hide();
             $("#winlose").html("<h2>Times up!</h2>").show();
             setTimeout(reset, 2000);
     }
