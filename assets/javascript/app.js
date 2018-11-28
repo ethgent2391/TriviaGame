@@ -1,7 +1,11 @@
 //psudo code:
 //goals:
 //timer
-var count = 11;
+$("#question").hide();
+$("#answers").hide();
+$("#winlose").hide();
+$("#timer").hide();
+var count = 20;
 var x = 1;
 var y = 1;
 var counter = setInterval(timer, 1000);
@@ -41,8 +45,8 @@ function timer(){
     if (count <= 0){
             clearInterval(counter);
             $("#timer").html(count);
-            console.log("times up");
-            reset();
+            $("#winlose").html("<h2>Times up!</h2>").show();
+            setTimeout(reset, 2000);
     }
             else{
                 $("#timer").html(count);
@@ -50,25 +54,25 @@ function timer(){
     }
 
 function display(){
-    var ask = questions[y][0];
-    var a = options[x][0];
-    var b = options[x][1];
-    var c = options[x][2];
-    var d = options[x][3];
 
     $("#start").hide();
-    $("#question").html(ask);
-    $("#a").html(a);
-    $("#b").html(b);
-    $("#c").html(c);
-    $("#d").html(d);
+    $("#winlose").hide();
+    $("#question").show();
+    $("#answers").show();
+    $("#timer").show();
+
+    $("#question").html(questions[y][0]);
+    $("#a").html(options[x][0]);
+    $("#b").html(options[x][1]);
+    $("#c").html(options[x][2]);
+    $("#d").html(options[x][3]);
     
 };
 
 function reset(){
 
 if (x < 10){
-        count=11;
+        count=20;
         clearInterval(counter);
         x++;
         y++;
@@ -77,8 +81,7 @@ if (x < 10){
         
     }
     else{
-        $("#quizarea").html("<h2>Quiz Over!</h2> \n <h3>Score: " + score + "/10 </h3>");
-        return;
+        $("#winlose").html("<h2>Quiz Over!</h2> \n <h3>Score: " + score + "/10 </h3>");
         };    
 };
 
@@ -87,10 +90,22 @@ if (x < 10){
 function check(){
     if (guess == questions[y][1]){
         score++;
-        reset();
+        $("#question").hide();
+        $("#answers").hide();
+        $("#timer").hide();
+        $("#winlose").html("<h2>Good Guess!</h2>");
+        $("#winlose").show();
+
+        setTimeout(reset, 2000);
     }
     else {
-        reset();
+        $("#question").hide();
+        $("#answers").hide();
+        $("#timer").hide();
+        $("#winlose").html("<h2>Wrong!</h2>");
+        $("#winlose").show();
+        
+        setTimeout(reset, 2000);
     };
     console.log(score);
     // console.log(answer);
