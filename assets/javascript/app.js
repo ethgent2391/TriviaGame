@@ -85,6 +85,7 @@ if (x < 10){
     }
     else{
         $("#winlose").html("<h2>Quiz Over!</h2> \n <h3>Score: " + score + "/10 </h3>");
+        $("#start").show();
         };    
 };
 
@@ -105,7 +106,7 @@ function check(){
         $("#question").hide();
         $("#answers").hide();
         $("#timer").hide();
-        $("#winlose").html("<h2>Wrong!</h2>");
+        $("#winlose").html("<h2>Wrong!</h2>\n <h3> Correct Answer: " + questions[y][1]+"</h3>");
         $("#winlose").show();
         
         setTimeout(reset, 2000);
